@@ -6,7 +6,8 @@
     <HospitalTop />
     <!-- 展示路由组件的区域 -->
     <div class="content">xxxx</div>
-    <div class="bottom">123</div>
+    <!-- 底部全局组件 -->
+    <HospitalBottom />
   </div>
 </template>
 
@@ -20,11 +21,6 @@
     width: 1200px;
     min-height: 700px;
     background: red;
-  }
-  .bottom {
-    width: 100%;
-    height: 50px;
-    background: cyan;
   }
 }
 </style>

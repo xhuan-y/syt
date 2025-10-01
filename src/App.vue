@@ -5,7 +5,9 @@
     <!-- 顶部全局组件 -->
     <HospitalTop />
     <!-- 展示路由组件的区域 -->
-    <div class="content">xxxx</div>
+    <div class="content">
+      <RouterView />
+    </div>
     <!-- 底部全局组件 -->
     <HospitalBottom />
   </div>
@@ -20,7 +22,6 @@
     margin-top: 70px;
     width: 1200px;
     min-height: 700px;
-    background: red;
   }
 }
 </style>

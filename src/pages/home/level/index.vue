@@ -1,4 +1,25 @@
-<script setup></script>
+<script setup>
+import { reqHospitalLevelAndRegion } from "@/api/home";
+import { onMounted, ref } from "vue";
+
+let levelArr = ref([]);
+let activeFlag = ref("");
+
+onMounted(() => {
+  getLevel();
+});
+
+const getLevel = async () => {
+  let result = await reqHospitalLevelAndRegion("HosType");
+  if (result.code == 200) {
+    levelArr.value = result.data;
+  }
+};
+
+function changeLevel(level) {
+  activeFlag.value = level;
+}
+</script>
 
 <template>
   <div class="level">
@@ -6,13 +27,17 @@
     <div class="content">
       <div class="left">等级:</div>
       <ul class="hospital">
-        <li class="active">全部</li>
-        <li>三级甲等</li>
-        <li>三级甲等</li>
-        <li>三级甲等</li>
-        <li>三级甲等</li>
-        <li>三级甲等</li>
-        <li>三级甲等</li>
+        <li :class="{ active: activeFlag == '' }" @click="changeLevel('')">
+          全部
+        </li>
+        <li
+          v-for="level in levelArr"
+          :class="{ active: activeFlag == level.value }"
+          :key="level.value"
+          @click="changeLevel(level.value)"
+        >
+          {{ level.name }}
+        </li>
       </ul>
     </div>
   </div>
